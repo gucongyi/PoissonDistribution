@@ -1,3 +1,5 @@
 /PoissonDistribution/Library/
 /PoissonDistribution/Temp/
 *.csproj
+/PoissonDistribution/.vs/
+/PoissonDistribution/obj/
