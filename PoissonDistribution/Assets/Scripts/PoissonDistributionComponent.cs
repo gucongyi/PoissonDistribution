@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PoissonDistributionComponent : MonoBehaviour
@@ -16,12 +17,32 @@ public class PoissonDistributionComponent : MonoBehaviour
 
     public GameObject goItemProb;
 
+    public InputField InputFieldLate5;
+    public InputField InputFieldLate10;
+    public InputField InputFieldLate15;
+    public Button buttonCalcLate;
+    public Text TextRetLate;
+
     private void Awake()
     {
         buttonHome.onClick.RemoveAllListeners();
         buttonHome.onClick.AddListener(OnButtonHomeClick);
         buttonAway.onClick.RemoveAllListeners();
         buttonAway.onClick.AddListener(OnButtonAwayClick);
+        buttonCalcLate.onClick.RemoveAllListeners();
+        buttonCalcLate.onClick.AddListener(onButtonCalcLateClick);
+    }
+
+    private void onButtonCalcLateClick()
+    {
+        if (string.IsNullOrEmpty(InputFieldLate5.text))
+            return;
+        if (string.IsNullOrEmpty(InputFieldLate10.text))
+            return;
+        if (string.IsNullOrEmpty(InputFieldLate15.text))
+            return;
+        float ret = float.Parse(InputFieldLate5.text) * 0.4f + float.Parse(InputFieldLate10.text) * 0.3f + float.Parse(InputFieldLate15.text) * 0.3f;
+        TextRetLate.text = $"{ret}";
     }
 
     private void OnButtonHomeClick()
